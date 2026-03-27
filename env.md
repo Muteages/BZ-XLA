@@ -28,7 +28,7 @@ wget "https://github.com/bazelbuild/bazel/releases/download/7.4.1/bazel-7.4.1-li
 
 ## JDK & C/C++ compiler
 
-They have already been pre-installed on the server, so we can use it directly.
+They have already been pre-installed on the server, so we can use them directly.
 
 ## Automake
 
@@ -47,8 +47,10 @@ git checkout 1c887668
 
 ## tensorflow
 
+__Note:__ Currently, we are working on the for-serving-2.20 branch.
+
 ``` bash
-git clone git@github.com:your_account_name/tensorflow.git
+git clone git@github.com:joeyye-work/tensorflow.git
 ```
 
 ``` bash
