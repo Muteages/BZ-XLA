@@ -10,7 +10,7 @@
     |-- correctness_utils.py
     |-- genOpModels.py # Generate the op models
     |-- ops_meta.py    # Meta data of the ops
-    |-- models.list    # List of the models to run
+    |-- models.list    # List of the models to run, add extra model path here
 ```
 
 ## runModels.sh
@@ -23,8 +23,8 @@ PORT_A=8500 # You can change it to any free port
 PORT_B=8501 # You can change it to any free port
 export PORT_A PORT_B
 BATCH_SIZE=10
-ABS_TOL=1e-7
-REL_TOL=1e-6
+ABS_TOL=1e-7 # Set atol
+REL_TOL=1e-6 # Set rtol
 ```
 
 Do correctness check for all models listed in `scripts/models.list`:
@@ -35,7 +35,9 @@ Do correctness check for all models listed in `scripts/models.list`:
 
 Do correctness check for one model (by short name):
 
+
 ``` bash
+# e.g to run model  model_MATUL:
 ./runModels.sh MATMUL
 ```
 
@@ -47,12 +49,14 @@ Use `save` argument to only compile the model using xla
 Output files:
 
 - `check_result.txt`: final summary.
-- `tmp/`: logs and temporary artifacts.
+- `tmp/`: logs and tf/xla dump files.
 - `data.json` / `results.json`: runtime files used by the check flow.
 
 ## genOpModels.py
 
 Generate all models defined in `ops_meta.py`:
+
+__Note__: it will overwrite the models.list every time, there is a `DEFAULT_MODELS` map in the script, you can add extra model path there.
 
 ```bash
 python genOpModels.py
